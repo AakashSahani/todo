@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import TaskContext from '../context/TaskContext';
 
 function TaskInput() {
 	const [text, setText] = useState('');
+	const { addTask } = useContext(TaskContext);
 	const handleChange = (e) => {
 		setText(e.currentTarget.value);
-		// console.log(e.currentTarget.value);
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -12,6 +13,8 @@ function TaskInput() {
 			alert('Please enter something.');
 		} else {
 			setText(e.currentTarget.value);
+			addTask(text);
+			setText('');
 		}
 	};
 	return (
@@ -23,7 +26,9 @@ function TaskInput() {
 				placeholder="add details"
 				onChange={handleChange}
 			/>
-			<button type="submit">Add</button>
+			<button type="submit" onSubmit={handleSubmit}>
+				Add
+			</button>
 		</form>
 	);
 }

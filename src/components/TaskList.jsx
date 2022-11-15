@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
-import TaskData from '../data/TaskData';
+import React, { useContext } from 'react';
+import Task from './Task';
+import TaskContext from '../context/TaskContext';
 
 function TaskList() {
-	const [tasks, setTasks] = useState(TaskData);
+	const { tasks, setTasks } = useContext(TaskContext);
+
 	return (
 		<div>
 			{tasks.map((task) => (
-				<div key={task.id} className="task">
-					<input type="checkbox" name="" id="" />
-					<li>
-						<span>{task.text}</span>
-					</li>
-				</div>
+				<Task key={task.id} task={task} />
 			))}
 		</div>
 	);

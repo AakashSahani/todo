@@ -5,13 +5,13 @@ function TaskState() {
 	return (
 		<ul className="task-state">
 			<li>
-				<Button />
+				<Button text="All" />
 			</li>
 			<li>
-				<Button />
+				<Button text="Active" />
 			</li>
 			<li>
-				<Button />
+				<Button text="Completed" />
 			</li>
 		</ul>
 	);

@@ -1,14 +1,24 @@
-import React from 'react';
-import TaskState from './TaskState';
-import TaskInput from './TaskInput';
-import TaskList from './TaskList';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import TaskContext from '../context/TaskContext';
 
-function Task() {
+function Task({ task }) {
+	const [active, setActive] = useState(false);
+
+	const handleChange = () => {
+		setActive((current) => !current);
+		console.log(active);
+	};
 	return (
-		<div className="task-container">
-			<TaskState />
-			<TaskInput />
-			<TaskList />
+		<div key={task.id} className={`task ${active ? 'line-thorough' : ''}`}>
+			<input
+				type="checkbox"
+				name="complete"
+				id="complete"
+				onChange={handleChange}
+			/>
+			<li>
+				<span className="line">{task.text}</span>
+			</li>
 		</div>
 	);
 }

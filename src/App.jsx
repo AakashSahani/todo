@@ -1,12 +1,16 @@
+import React from 'react';
+import { TaskProvider } from './context/TaskContext';
 import Header from './components/Header';
-import Task from './components/Task';
+import TaskContainer from './components/TaskContainer';
 
 function App() {
 	return (
-		<div className="app">
-			<Header />
-			<Task />
-		</div>
+		<TaskProvider>
+			<div className="app">
+				<Header />
+				<TaskContainer />
+			</div>
+		</TaskProvider>
 	);
 }
 
